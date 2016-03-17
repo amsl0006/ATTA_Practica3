@@ -124,18 +124,49 @@ public String letraApellido2 =null;
             //para los apellidos
             if ((byte) datos[offset] == (byte) 0xA1) {
                 //El certificado empieza aquí
-                byte[] rapellido1 = new byte[16];
+                byte[] rapellido1 = new byte[20];
 
                 
                 
                 
                 //Nos posicionamos en el byte donde empieza el NIF y leemos sus 9 bytes
                 for (int z = 0; z < rapellido1.length; z++) {
-                    rapellido1[z] = datos[91 + z];
+                    rapellido1[z] = datos[132 + z];
                 }
                 Apellido1 = new String(rapellido1);
             }
-            System.out.println("apeli"+Apellido1);
+            System.out.println("Apellido 1:"+Apellido1);
+           
+            if ((byte) datos[offset] == (byte) 0xA1) {
+                //El certificado empieza aquí
+                byte[] rnombre = new byte[14];
+
+                
+                
+                
+                //Nos posicionamos en el byte donde empieza el NIF y leemos sus 9 bytes
+                for (int z = 0; z < rnombre.length; z++) {
+                    rnombre[z] = datos[217 + z];
+                }
+                letraNombre = new String(rnombre);
+            }
+            System.out.println("Nombre:"+letraNombre);
+            
+            
+            if ((byte) datos[offset] == (byte) 0xA1) {
+                //El certificado empieza aquí
+                byte[] rapellido2 = new byte[6];
+
+                
+                
+                
+                //Nos posicionamos en el byte donde empieza el NIF y leemos sus 9 bytes
+                for (int z = 0; z < rapellido2.length; z++) {
+                    rapellido2[z] = datos[209 + z];
+                }
+                letraApellido2 = new String(rapellido2);
+            }
+            System.out.println("Apellido 2:"+letraApellido2);
         }
         return completName;
     }
