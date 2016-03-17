@@ -61,6 +61,7 @@ public String letraApellido2 =null;
 
     public String leerDeCertificado(CardChannel ch) throws CardException {
         int offset = 0;
+        String usuario =null;
         String completName = null;
         String Apellido1 =null;
         String letraNombre =null;
@@ -167,8 +168,14 @@ public String letraApellido2 =null;
                 letraApellido2 = new String(rapellido2);
             }
             System.out.println("Apellido 2:"+letraApellido2);
+           usuario=letraNombre+Apellido1+letraApellido2; 
+           
+        String susuario = usuario.substring(0,1)+usuario.substring(12,19)+usuario.substring(20,30)+usuario.substring(30,31);
+        System.out.println("Usuario"+susuario);
+           
         }
         return completName;
+        
     }
 
    

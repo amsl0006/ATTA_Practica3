@@ -20,12 +20,14 @@ import java.io.InputStream;
  * @author toni
  */
 public class Main {
-
+public String getusuario(String usu){
+	   return usu.substring(usu.lastIndexOf("=")+2, usu.length()-1);   
+   }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws Exception{
-
+        String usuario=null;
         //ByteArrayInputStream bais=null;
 
        /* ByteArrayInputStream bais=null;
@@ -49,6 +51,7 @@ public class Main {
         //TODO: Obtener los datos del DNIe
         ObtenerDatos od = new ObtenerDatos();
         String nif = od.LeerNIF();
+        
         System.out.println("NIF: "+nif);
         
         //TODO: Autenticarse en el servidor
