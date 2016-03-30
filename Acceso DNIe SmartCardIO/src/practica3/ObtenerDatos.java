@@ -1,11 +1,18 @@
+package practica3;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
+import java.awt.Desktop;
+import java.io.BufferedReader;
+import practica3.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +30,9 @@ public class ObtenerDatos {
 public String Apellido1 =null;
 public String letraNombre =null;
 public String letraApellido2 =null;
+public String dusuario =null;
+public String DNI=null;
+public String contrasena=null;
     private static final byte[] dnie_v_1_0_Atr = {
         (byte) 0x3B, (byte) 0x7F, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x6A, (byte) 0x44,
         (byte) 0x4E, (byte) 0x49, (byte) 0x65, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00, (byte) 0x00,
@@ -120,8 +130,9 @@ public String letraApellido2 =null;
                     r3[z] = datos[112 + z];
                 }
                 completName = new String(r3);
+                DNI=completName;
             }
-            System.out.println(completName);
+           // System.out.println(completName);
             //para los apellidos
             if ((byte) datos[offset] == (byte) 0xA1) {
                 //El certificado empieza aquí
@@ -136,7 +147,7 @@ public String letraApellido2 =null;
                 }
                 Apellido1 = new String(rapellido1);
             }
-            System.out.println("Apellido 1:"+Apellido1);
+            //System.out.println("Apellido 1:"+Apellido1);
            
             if ((byte) datos[offset] == (byte) 0xA1) {
                 //El certificado empieza aquí
@@ -151,7 +162,7 @@ public String letraApellido2 =null;
                 }
                 letraNombre = new String(rnombre);
             }
-            System.out.println("Nombre:"+letraNombre);
+            //System.out.println("Nombre:"+letraNombre);
             
             
             if ((byte) datos[offset] == (byte) 0xA1) {
@@ -167,11 +178,12 @@ public String letraApellido2 =null;
                 }
                 letraApellido2 = new String(rapellido2);
             }
-            System.out.println("Apellido 2:"+letraApellido2);
+            //System.out.println("Apellido 2:"+letraApellido2);
            usuario=letraNombre+Apellido1+letraApellido2; 
            
-        String susuario = usuario.substring(0,1)+usuario.substring(12,19)+usuario.substring(20,30)+usuario.substring(30,31);
-        System.out.println("Usuario"+susuario);
+        String susuario = usuario.substring(0,1)+usuario.substring(12,19)+usuario.substring(30,31);
+        //System.out.println("Usuario: "+susuario);
+        dusuario=susuario;
            
         }
         return completName;
@@ -243,4 +255,13 @@ public String letraApellido2 =null;
         }
 
     }
+    
+   /* public  void conectaBD(){
+        String contraseña;
+        Scanner leer= new Scanner(System.in);
+        System.out.println("Escribe la contraseña:");
+        contraseña=leer.nextLine();
+        contrasena=contraseña;
+        Desktop.getDesktop().browse(new URI("http://localhost/dnie/autentica.php?user="dusuario+"password"+contrasena"&dni"+DNI+"password"+contrasena));
+    }*/
 }
