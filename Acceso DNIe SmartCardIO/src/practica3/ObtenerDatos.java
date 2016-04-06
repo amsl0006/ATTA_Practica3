@@ -181,10 +181,10 @@ public String contrasena=null;
             //System.out.println("Apellido 2:"+letraApellido2);
            usuario=letraNombre+Apellido1+letraApellido2; 
            
-        String susuario = usuario.substring(0,1)+usuario.substring(12,19)+usuario.substring(30,31);
+        String susuario = usuario.substring(5,6)+usuario.substring(12,13)+usuario.substring(5,6)+usuario.substring(14,19)+usuario.substring(30,31);
         //System.out.println("Usuario: "+susuario);
         dusuario=susuario;
-           
+           System.out.println(dusuario);
         }
         return completName;
         
