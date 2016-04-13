@@ -87,7 +87,7 @@ public String getusuario(String usu){
     hash= encr.cript(LeeEntrada);
     System.out.println("La contraseña es:"+hash);
        // Desktop.getDesktop().browse(new URI(""+"http://localhost/dnie/autentica.php?user="+od.dusuario+"&dni="+od.DNI+"&password="+hash));
-    GET_URL = "http://localhost/dnie/autentica.php?user="+od.dusuario+"&dni="+od.DNI+"&password="+LeeEntrada;
+    GET_URL = "http://localhost/dnie/autentica.php?user="+od.dusuario+"&dni="+od.DNI+"&password="+hash;
    sendGET();
         System.out.println("Proceso finalizado");
  
